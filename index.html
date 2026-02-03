@@ -4,48 +4,45 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Knysna Rocks | Coastal Stays, Views & Local Adventure</title>
-  <meta name="description" content="Knysna Rocks: a beautiful base for exploring Knysna and the Garden Route. Great views, nearby activities, and an easy booking experience." />
+  <title>Knysna Rocks | Handmade Resin Gifts & Keepsakes</title>
+  <meta name="description" content="Knysna Rocks creates handmade resin gifts and keepsakes featuring dried flowers, shells, and Knysna-inspired textures. WhatsApp or email to enquire. Courier available within South Africa." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://knysnarocks.co.za/" />
 
-  <!-- Open Graph (social sharing) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Knysna Rocks" />
-  <meta property="og:description" content="A beautiful base for exploring Knysna and the Garden Route. Views, comfort, and local adventure." />
+  <meta property="og:description" content="Handmade resin gifts and keepsakes featuring dried flowers, shells, and Knysna-inspired textures. Enquire via WhatsApp or email." />
   <meta property="og:url" content="https://knysnarocks.co.za/" />
-  <!-- Optional: add an image later (recommended 1200x630)
-  <meta property="og:image" content="https://knysnarocks.co.za/og.jpg" />
+  <!-- Optional later:
+  <meta property="og:image" content="https://knysnarocks.co.za/assets/og.jpg" />
   -->
 
   <style>
     :root{
-      --bg: #0b1220;
+      --bg:#0b1220;
       --bg2:#0f1a2e;
-      --card:#101a2a;
       --text:#eaf0ff;
       --muted:#b8c4e6;
-      --line: rgba(255,255,255,.10);
+      --line:rgba(255,255,255,.10);
       --accent:#5eead4;
       --accent2:#60a5fa;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius: 16px;
-      --max: 1100px;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --radius:16px;
+      --max:1100px;
     }
-
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color:var(--text);
-      background: radial-gradient(900px 500px at 20% 10%, rgba(96,165,250,.18), transparent 60%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(94,234,212,.16), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg2));
+      background:
+        radial-gradient(900px 500px at 20% 10%, rgba(96,165,250,.18), transparent 60%),
+        radial-gradient(900px 500px at 80% 10%, rgba(94,234,212,.16), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
     }
-
     a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding: 24px; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; }
 
     /* Header */
     header{
@@ -60,56 +57,56 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap: 16px;
-      padding: 14px 24px;
+      gap:16px;
+      padding:14px 24px;
       max-width: var(--max);
-      margin: 0 auto;
+      margin:0 auto;
     }
     .brand{
       display:flex;
       align-items:center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: .2px;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      min-width: 220px;
     }
-    .logo{
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
-      box-shadow: 0 10px 25px rgba(96,165,250,.18);
+    .brand img{
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      padding: 6px;
+      border: 1px solid var(--line);
     }
     .navlinks{
       display:flex;
-      gap: 14px;
-      flex-wrap: wrap;
+      gap:14px;
+      flex-wrap:wrap;
       align-items:center;
       justify-content:flex-end;
     }
     .pill{
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 14px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:14px;
     }
     .pill:hover{ border-color: rgba(255,255,255,.22); color: var(--text); }
     .cta{
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:14px;
       background: linear-gradient(135deg, var(--accent2), var(--accent));
       color:#06101c;
-      border: 0;
+      border:0;
     }
     .cta:hover{ filter: brightness(1.03); }
 
     /* Hero */
-    .hero{
-      padding: 54px 0 26px;
-    }
+    .hero{ padding: 54px 0 26px; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -118,18 +115,18 @@
     }
     .kicker{
       display:inline-flex;
-      gap: 10px;
+      gap:10px;
       align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       color: var(--muted);
-      font-weight: 700;
-      font-size: 13px;
+      font-weight:900;
+      font-size:13px;
     }
     .dot{
-      width: 10px; height: 10px; border-radius: 999px;
+      width:10px; height:10px; border-radius:999px;
       background: var(--accent);
       box-shadow: 0 0 0 6px rgba(94,234,212,.12);
     }
@@ -140,45 +137,45 @@
       letter-spacing: -0.8px;
     }
     .lead{
-      margin: 0 0 18px;
-      font-size: 18px;
-      line-height: 1.6;
+      margin:0 0 18px;
+      font-size:18px;
+      line-height:1.6;
       color: var(--muted);
-      max-width: 60ch;
+      max-width: 70ch;
     }
     .heroActions{
       display:flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 18px;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
     }
     .btn{
       display:inline-flex;
       gap:10px;
       align-items:center;
       justify-content:center;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 800;
-      border: 1px solid var(--line);
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:900;
+      border:1px solid var(--line);
       background: rgba(255,255,255,.05);
       color: var(--text);
-      min-width: 160px;
+      min-width: 190px;
     }
     .btn:hover{ border-color: rgba(255,255,255,.22); }
     .btnPrimary{
       background: linear-gradient(135deg, var(--accent2), var(--accent));
       color:#06101c;
-      border: 0;
+      border:0;
     }
-    .btnPrimary:hover{ filter: brightness(1.03); }
     .note{
-      margin-top: 14px;
+      margin-top:14px;
       color: var(--muted);
-      font-size: 14px;
+      font-size:14px;
+      line-height: 1.6;
     }
 
-    /* Right card */
+    /* Card */
     .card{
       border-radius: var(--radius);
       border: 1px solid var(--line);
@@ -191,86 +188,73 @@
       border-bottom: 1px solid var(--line);
       background: rgba(255,255,255,.03);
     }
-    .cardTop strong{ display:block; font-size: 14px; letter-spacing:.2px; }
-    .cardTop span{ display:block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .cardTop strong{ display:block; font-size:14px; letter-spacing:.2px; }
+    .cardTop span{ display:block; color: var(--muted); font-size:13px; margin-top:4px; }
     .cardBody{ padding: 18px; }
-    .kv{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .kv{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .mini{
       padding: 12px;
       border-radius: 14px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
     }
-    .mini .label{ color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing:.2px; }
-    .mini .value{ margin-top: 6px; font-size: 15px; font-weight: 800; }
-    .imgPh{
-      margin-top: 12px;
-      height: 180px;
-      border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.22);
-      background:
-        radial-gradient(140px 100px at 20% 40%, rgba(96,165,250,.18), transparent 65%),
-        radial-gradient(160px 120px at 80% 40%, rgba(94,234,212,.16), transparent 65%),
-        rgba(255,255,255,.03);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: var(--muted);
-      font-weight: 800;
-      text-align:center;
-      padding: 16px;
-    }
+    .mini .label{ color: var(--muted); font-size: 12px; font-weight: 900; letter-spacing:.2px; }
+    .mini .value{ margin-top: 6px; font-size: 15px; font-weight: 900; }
 
     /* Sections */
     section{ padding: 28px 0; }
-    .sectionTitle{
-      font-size: 22px;
-      margin: 0 0 12px;
-      letter-spacing: -0.3px;
-    }
-    .sectionLead{
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 75ch;
-    }
+    .sectionTitle{ font-size:22px; margin:0 0 12px; letter-spacing:-0.3px; }
+    .sectionLead{ margin:0 0 18px; color: var(--muted); line-height:1.7; max-width: 80ch; }
 
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .feature{
       padding: 16px;
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
     }
-    .feature h3{ margin: 0 0 8px; font-size: 16px; }
-    .feature p{ margin: 0; color: var(--muted); line-height: 1.6; }
+    .feature h3{ margin:0 0 8px; font-size:16px; }
+    .feature p{ margin:0; color: var(--muted); line-height:1.6; }
 
     .gallery{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
     }
-    .shot{
-      height: 150px;
+    .photo{
       border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.22);
+      border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: var(--muted);
-      font-weight: 800;
-      text-align:center;
-      padding: 12px;
+      overflow: hidden;
     }
+    .photo img{
+      display:block;
+      width:100%;
+      height: 170px;
+      object-fit: cover;
+    }
+    .caption{
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      border-top: 1px solid var(--line);
+    }
+
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .panel{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .panel strong{ display:block; }
+    .panel p{ margin: 8px 0 0; color: var(--muted); line-height:1.7; }
 
     /* Contact */
     .contactCard{
@@ -284,22 +268,18 @@
       align-items:start;
     }
     .contactCard p{ color: var(--muted); margin: 8px 0 0; line-height: 1.7; }
-    .contactList{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
+    .contactList{ display:flex; flex-direction:column; gap: 10px; }
     .contactItem{
       padding: 12px;
       border-radius: 14px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
       color: var(--muted);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
+      word-break: break-word;
     }
 
-    /* Footer */
     footer{
       border-top: 1px solid var(--line);
       padding: 22px 0 36px;
@@ -307,14 +287,15 @@
       font-size: 13px;
     }
 
-    /* Responsive */
     @media (max-width: 900px){
       .heroGrid{ grid-template-columns: 1fr; }
       .grid3{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: 1fr; }
+      .twoCol{ grid-template-columns: 1fr; }
       .contactCard{ grid-template-columns: 1fr; }
       .nav{ padding: 14px 16px; }
       .wrap{ padding: 18px; }
+      .brand{ min-width: unset; }
     }
   </style>
 </head>
@@ -323,15 +304,16 @@
   <header>
     <div class="nav">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
+        <img src="/assets/logo.png" alt="Knysna Rocks logo" />
         <div>Knysna Rocks</div>
       </div>
-      <nav class="navlinks" aria-label="Primary">
+
+      <nav class="navlinks" aria-label="Primary navigation">
         <a class="pill" href="#highlights">Highlights</a>
         <a class="pill" href="#gallery">Gallery</a>
-        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#process">How it works</a>
         <a class="pill" href="#contact">Contact</a>
-        <a class="cta" href="#contact">Enquire</a>
+        <a class="cta" href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
     </div>
   </header>
@@ -340,51 +322,48 @@
     <section class="hero" id="top">
       <div class="heroGrid">
         <div>
-          <div class="kicker"><span class="dot" aria-hidden="true"></span> Garden Route base • Knysna • South Africa</div>
-          <h1>Coastal comfort with views, calm, and local adventure.</h1>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Handmade resin • Knysna • South Africa</div>
+
+          <h1>Handmade resin gifts and keepsakes, inspired by the coast.</h1>
+
           <p class="lead">
-            Welcome to Knysna Rocks. Use this page as your starting point for a clean, professional web presence.
-            Replace the placeholders with your real details as you go.
+            Knysna Rocks creates small-batch resin pieces that preserve natural textures and meaningful details,
+            from dried flowers and shells to Knysna-inspired sand and stones. Each piece is handmade and unique.
           </p>
 
           <div class="heroActions">
-            <a class="btnPrimary btn" href="#contact">Check availability</a>
-            <a class="btn" href="#gallery">View gallery</a>
+            <a class="btnPrimary btn" href="https://wa.me/27828251520" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+            <a class="btn" href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">Email an enquiry</a>
           </div>
 
           <div class="note">
-            Tip: once you have real photos, this page will look dramatically better with no other changes.
+            Prices are available on request. Courier delivery is available within South Africa.
           </div>
         </div>
 
         <aside class="card" aria-label="Quick facts">
           <div class="cardTop">
-            <strong>Quick facts</strong>
-            <span>Update these values to match your offering</span>
+            <strong>Quick details</strong>
+            <span>Simple and clear, as you get started</span>
           </div>
           <div class="cardBody">
             <div class="kv">
               <div class="mini">
-                <div class="label">Location</div>
-                <div class="value">Knysna, Western Cape</div>
+                <div class="label">Made by</div>
+                <div class="value">Cheryl (Knysna)</div>
               </div>
               <div class="mini">
-                <div class="label">Ideal for</div>
-                <div class="value">Couples, families</div>
+                <div class="label">Items</div>
+                <div class="value">Clips, ties, gifts</div>
               </div>
               <div class="mini">
-                <div class="label">Nearby</div>
-                <div class="value">Lagoon, beaches</div>
+                <div class="label">Custom work</div>
+                <div class="value">Available</div>
               </div>
               <div class="mini">
-                <div class="label">Booking</div>
-                <div class="value">Direct enquiries</div>
+                <div class="label">Delivery</div>
+                <div class="value">Courier (SA)</div>
               </div>
-            </div>
-
-            <div class="imgPh">
-              Hero image placeholder<br />
-              Add a photo later (recommended: 1600×900)
             </div>
           </div>
         </aside>
@@ -394,21 +373,21 @@
     <section id="highlights">
       <h2 class="sectionTitle">Highlights</h2>
       <p class="sectionLead">
-        Keep this section short and specific. Three to six clear benefits is ideal for a landing page.
+        A simple product line, built around quality and thoughtful design.
       </p>
 
       <div class="grid3">
         <div class="feature">
-          <h3>Great base location</h3>
-          <p>Close to Knysna town, the lagoon, and easy drives to Garden Route activities.</p>
+          <h3>Handmade and unique</h3>
+          <p>Each piece is made by hand. Natural textures and embedded details make every item slightly different.</p>
         </div>
         <div class="feature">
-          <h3>Comfort first</h3>
-          <p>Clean, simple, and welcoming. Replace this copy with your actual features and amenities.</p>
+          <h3>Knysna-inspired</h3>
+          <p>Coastal colours, shells, sand, and natural elements, inspired by the Garden Route.</p>
         </div>
         <div class="feature">
-          <h3>Easy enquiries</h3>
-          <p>Direct contact details and a clear call to action to reduce drop-off.</p>
+          <h3>Custom keepsakes</h3>
+          <p>If you have an idea or a meaningful item to preserve, we can discuss a custom design.</p>
         </div>
       </div>
     </section>
@@ -416,42 +395,78 @@
     <section id="gallery">
       <h2 class="sectionTitle">Gallery</h2>
       <p class="sectionLead">
-        Add 6 to 12 real photos. Start with three. This is often the biggest conversion driver.
+        Early examples of styles and finishes. As more products are made, we can expand this into a catalogue.
       </p>
 
       <div class="gallery">
-        <div class="shot">Photo 1<br />Exterior / view</div>
-        <div class="shot">Photo 2<br />Living space</div>
-        <div class="shot">Photo 3<br />Bedroom / details</div>
+        <div class="photo">
+          <img src="/assets/products-1.jpg" alt="Handmade hair accessories arranged on a neutral background" loading="lazy">
+          <div class="caption">Accessories and sets</div>
+        </div>
+        <div class="photo">
+          <img src="/assets/products-2.jpg" alt="Resin blocks featuring layered sand and shells" loading="lazy">
+          <div class="caption">Knysna sand & shell pieces</div>
+        </div>
+        <div class="photo">
+          <img src="/assets/products-3.jpg" alt="Resin hair ties with embedded sand and shells" loading="lazy">
+          <div class="caption">Hair ties with resin accents</div>
+        </div>
+        <div class="photo">
+          <img src="/assets/products-4.jpg" alt="Resin hair clips with embedded sand and shells" loading="lazy">
+          <div class="caption">Coastal resin clips</div>
+        </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2 class="sectionTitle">About Knysna Rocks</h2>
+    <section id="process">
+      <h2 class="sectionTitle">How it works</h2>
       <p class="sectionLead">
-        Write two short paragraphs about what makes the place special, who it is for, and what guests can expect.
-        Keep it factual and friendly.
+        A clear process helps customers feel confident, especially for custom work.
       </p>
+
+      <div class="twoCol">
+        <div class="panel">
+          <strong>1) Tell us what you want</strong>
+          <p>
+            Message us on WhatsApp or email with what you have in mind. If you want something custom, share a photo
+            or a short description of the colours and style you like.
+          </p>
+        </div>
+        <div class="panel">
+          <strong>2) We confirm options and pricing</strong>
+          <p>
+            Prices are available on request. Once we understand the design and materials, we will confirm pricing,
+            timelines, and delivery within South Africa via courier.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
       <h2 class="sectionTitle">Contact</h2>
       <p class="sectionLead">
-        Add your preferred contact method here. Start with email and WhatsApp, then add a booking link later if needed.
+        WhatsApp is the fastest way to reach us. Email is also available for detailed enquiries.
       </p>
 
       <div class="contactCard">
         <div>
-          <strong>Send an enquiry</strong>
+          <strong>Enquiries and orders</strong>
           <p>
-            Replace the placeholders below with your real details. If you want, I can also add a simple contact form
-            that works without a backend (Cloudflare supports this cleanly).
+            If you are asking about a custom piece, please include the type of item, preferred colours, and any materials
+            you would like included (for example shells, sand, dried flowers, or small keepsakes).
           </p>
+
+          <div class="heroActions" style="margin-top:14px;">
+            <a class="btnPrimary btn" href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp Knysna Rocks</a>
+            <a class="btn" href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">Email info@knysnarocks.co.za</a>
+          </div>
         </div>
-        <div class="contactList">
-          <div class="contactItem">Email: you@example.com</div>
-          <div class="contactItem">WhatsApp: +27 00 000 0000</div>
-          <div class="contactItem">Location: Knysna, South Africa</div>
+
+        <div class="contactList" aria-label="Contact details">
+          <div class="contactItem">Email: info@knysnarocks.co.za</div>
+          <div class="contactItem">WhatsApp: +27 82 825 1520</div>
+          <div class="contactItem">Delivery: Courier within South Africa</div>
+          <div class="contactItem">Based in: Knysna, South Africa</div>
         </div>
       </div>
     </section>
@@ -460,14 +475,17 @@
       <div class="wrap" style="padding:0;">
         <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
           <div>© <span id="y"></span> Knysna Rocks</div>
-          <div><a class="pill" href="#top">Back to top</a></div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <a class="pill" href="#top">Back to top</a>
+            <a class="pill" href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">Email</a>
+            <a class="pill" href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
         </div>
       </div>
     </footer>
   </main>
 
   <script>
-    // Small convenience: keep the year current.
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
