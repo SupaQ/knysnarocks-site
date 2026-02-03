@@ -1,35 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
-  <meta charset="utf-8">
-  <title>Knysna Rocks</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Knysna Rocks — a simple site hosted on Cloudflare Pages.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Knysna Rocks | Coastal Stays, Views & Local Adventure</title>
+  <meta name="description" content="Knysna Rocks: a beautiful base for exploring Knysna and the Garden Route. Great views, nearby activities, and an easy booking experience." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://knysnarocks.co.za/" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Knysna Rocks" />
+  <meta property="og:description" content="A beautiful base for exploring Knysna and the Garden Route. Views, comfort, and local adventure." />
+  <meta property="og:url" content="https://knysnarocks.co.za/" />
+  <!-- Optional: add an image later (recommended 1200x630)
+  <meta property="og:image" content="https://knysnarocks.co.za/og.jpg" />
+  -->
+
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f7f7f7;
-      color: #222;
+    :root{
+      --bg: #0b1220;
+      --bg2:#0f1a2e;
+      --card:#101a2a;
+      --text:#eaf0ff;
+      --muted:#b8c4e6;
+      --line: rgba(255,255,255,.10);
+      --accent:#5eead4;
+      --accent2:#60a5fa;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1100px;
     }
-    main {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(900px 500px at 20% 10%, rgba(96,165,250,.18), transparent 60%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(94,234,212,.16), transparent 60%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
     }
-    h1 {
-      margin-top: 0;
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding: 24px; }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.65);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 14px 24px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 10px 25px rgba(96,165,250,.18);
+    }
+    .navlinks{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .pill{
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .pill:hover{ border-color: rgba(255,255,255,.22); color: var(--text); }
+    .cta{
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color:#06101c;
+      border: 0;
+    }
+    .cta:hover{ filter: brightness(1.03); }
+
+    /* Hero */
+    .hero{
+      padding: 54px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items: start;
+    }
+    .kicker{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(94,234,212,.12);
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.8px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+    .heroActions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .btn{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      min-width: 160px;
+    }
+    .btn:hover{ border-color: rgba(255,255,255,.22); }
+    .btnPrimary{
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color:#06101c;
+      border: 0;
+    }
+    .btnPrimary:hover{ filter: brightness(1.03); }
+    .note{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Right card */
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(16,26,42,.72);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .cardTop{
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .cardTop strong{ display:block; font-size: 14px; letter-spacing:.2px; }
+    .cardTop span{ display:block; color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .cardBody{ padding: 18px; }
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .mini{
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .mini .label{ color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing:.2px; }
+    .mini .value{ margin-top: 6px; font-size: 15px; font-weight: 800; }
+    .imgPh{
+      margin-top: 12px;
+      height: 180px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background:
+        radial-gradient(140px 100px at 20% 40%, rgba(96,165,250,.18), transparent 65%),
+        radial-gradient(160px 120px at 80% 40%, rgba(94,234,212,.16), transparent 65%),
+        rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--muted);
+      font-weight: 800;
+      text-align:center;
+      padding: 16px;
+    }
+
+    /* Sections */
+    section{ padding: 28px 0; }
+    .sectionTitle{
+      font-size: 22px;
+      margin: 0 0 12px;
+      letter-spacing: -0.3px;
+    }
+    .sectionLead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 75ch;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .feature{
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .feature h3{ margin: 0 0 8px; font-size: 16px; }
+    .feature p{ margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .shot{
+      height: 150px;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--muted);
+      font-weight: 800;
+      text-align:center;
+      padding: 12px;
+    }
+
+    /* Contact */
+    .contactCard{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      align-items:start;
+    }
+    .contactCard p{ color: var(--muted); margin: 8px 0 0; line-height: 1.7; }
+    .contactList{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .contactItem{
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--line);
+      padding: 22px 0 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .gallery{ grid-template-columns: 1fr; }
+      .contactCard{ grid-template-columns: 1fr; }
+      .nav{ padding: 14px 16px; }
+      .wrap{ padding: 18px; }
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <h1>Knysna Rocks</h1>
-    <p>Your website is live on Cloudflare Pages.</p>
-    <p>This is a clean starting point. You can expand it later.</p>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Knysna Rocks</div>
+      </div>
+      <nav class="navlinks" aria-label="Primary">
+        <a class="pill" href="#highlights">Highlights</a>
+        <a class="pill" href="#gallery">Gallery</a>
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#contact">Contact</a>
+        <a class="cta" href="#contact">Enquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="top">
+      <div class="heroGrid">
+        <div>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Garden Route base • Knysna • South Africa</div>
+          <h1>Coastal comfort with views, calm, and local adventure.</h1>
+          <p class="lead">
+            Welcome to Knysna Rocks. Use this page as your starting point for a clean, professional web presence.
+            Replace the placeholders with your real details as you go.
+          </p>
+
+          <div class="heroActions">
+            <a class="btnPrimary btn" href="#contact">Check availability</a>
+            <a class="btn" href="#gallery">View gallery</a>
+          </div>
+
+          <div class="note">
+            Tip: once you have real photos, this page will look dramatically better with no other changes.
+          </div>
+        </div>
+
+        <aside class="card" aria-label="Quick facts">
+          <div class="cardTop">
+            <strong>Quick facts</strong>
+            <span>Update these values to match your offering</span>
+          </div>
+          <div class="cardBody">
+            <div class="kv">
+              <div class="mini">
+                <div class="label">Location</div>
+                <div class="value">Knysna, Western Cape</div>
+              </div>
+              <div class="mini">
+                <div class="label">Ideal for</div>
+                <div class="value">Couples, families</div>
+              </div>
+              <div class="mini">
+                <div class="label">Nearby</div>
+                <div class="value">Lagoon, beaches</div>
+              </div>
+              <div class="mini">
+                <div class="label">Booking</div>
+                <div class="value">Direct enquiries</div>
+              </div>
+            </div>
+
+            <div class="imgPh">
+              Hero image placeholder<br />
+              Add a photo later (recommended: 1600×900)
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="highlights">
+      <h2 class="sectionTitle">Highlights</h2>
+      <p class="sectionLead">
+        Keep this section short and specific. Three to six clear benefits is ideal for a landing page.
+      </p>
+
+      <div class="grid3">
+        <div class="feature">
+          <h3>Great base location</h3>
+          <p>Close to Knysna town, the lagoon, and easy drives to Garden Route activities.</p>
+        </div>
+        <div class="feature">
+          <h3>Comfort first</h3>
+          <p>Clean, simple, and welcoming. Replace this copy with your actual features and amenities.</p>
+        </div>
+        <div class="feature">
+          <h3>Easy enquiries</h3>
+          <p>Direct contact details and a clear call to action to reduce drop-off.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2 class="sectionTitle">Gallery</h2>
+      <p class="sectionLead">
+        Add 6 to 12 real photos. Start with three. This is often the biggest conversion driver.
+      </p>
+
+      <div class="gallery">
+        <div class="shot">Photo 1<br />Exterior / view</div>
+        <div class="shot">Photo 2<br />Living space</div>
+        <div class="shot">Photo 3<br />Bedroom / details</div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="sectionTitle">About Knysna Rocks</h2>
+      <p class="sectionLead">
+        Write two short paragraphs about what makes the place special, who it is for, and what guests can expect.
+        Keep it factual and friendly.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2 class="sectionTitle">Contact</h2>
+      <p class="sectionLead">
+        Add your preferred contact method here. Start with email and WhatsApp, then add a booking link later if needed.
+      </p>
+
+      <div class="contactCard">
+        <div>
+          <strong>Send an enquiry</strong>
+          <p>
+            Replace the placeholders below with your real details. If you want, I can also add a simple contact form
+            that works without a backend (Cloudflare supports this cleanly).
+          </p>
+        </div>
+        <div class="contactList">
+          <div class="contactItem">Email: you@example.com</div>
+          <div class="contactItem">WhatsApp: +27 00 000 0000</div>
+          <div class="contactItem">Location: Knysna, South Africa</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap" style="padding:0;">
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
+          <div>© <span id="y"></span> Knysna Rocks</div>
+          <div><a class="pill" href="#top">Back to top</a></div>
+        </div>
+      </div>
+    </footer>
   </main>
+
+  <script>
+    // Small convenience: keep the year current.
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
