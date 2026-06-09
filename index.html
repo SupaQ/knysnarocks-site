@@ -1,354 +1,721 @@
 <!DOCTYPE html>
 <html lang="en-ZA">
 <head>
+
+  <!-- =============================================
+       FAVICONS
+       These three lines tell browsers and Apple devices
+       which icon to use for the site. All three files
+       must remain in the root of the repository.
+  ============================================= -->
   <link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Knysna Rocks | Handmade Resin Gifts & Keepsakes</title>
+  <!-- =============================================
+       SEO BASICS
+       The title and description appear in Google results.
+       The canonical tag tells Google which URL is the
+       "official" one (prevents duplicate-content issues).
+  ============================================= -->
+  <title>Knysna Rocks | Handmade Resin Gifts &amp; Keepsakes</title>
   <meta name="description" content="Knysna Rocks creates handmade resin gifts and keepsakes featuring dried flowers, shells, and Knysna-inspired textures. WhatsApp or email to enquire. Courier available within South Africa." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://knysnarocks.co.za/" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Knysna Rocks" />
+  <!-- =============================================
+       OPEN GRAPH
+       Controls how the page looks when shared on
+       WhatsApp, Facebook, and other platforms.
+  ============================================= -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Knysna Rocks" />
   <meta property="og:description" content="Handmade resin gifts and keepsakes featuring dried flowers, shells, and Knysna-inspired textures. Enquire via WhatsApp or email." />
-  <meta property="og:url" content="https://knysnarocks.co.za/" />
-  <!-- Optional later:
+  <meta property="og:url"         content="https://knysnarocks.co.za/" />
+  <!-- Once you have a good product photo, add a social preview image here:
   <meta property="og:image" content="https://knysnarocks.co.za/assets/og.jpg" />
   -->
 
-  <style>
-    :root{
-      --bg:#0b1220;
-      --bg2:#0f1a2e;
-      --text:#eaf0ff;
-      --muted:#b8c4e6;
-      --line:rgba(255,255,255,.10);
-      --accent:#5eead4;
-      --accent2:#60a5fa;
-      --shadow:0 18px 50px rgba(0,0,0,.35);
-      --radius:16px;
-      --max:1100px;
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 20% 10%, rgba(96,165,250,.18), transparent 60%),
-        radial-gradient(900px 500px at 80% 10%, rgba(94,234,212,.16), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-    }
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; }
+  <!-- =============================================
+       GOOGLE FONTS — Lora (serif heading font)
+       Lora is a warm, elegant serif used for all headings.
+       The two preconnect lines open the connection early
+       to reduce the time it takes to load the font.
+       The display=swap at the end means the page shows
+       a fallback font immediately while Lora downloads,
+       so visitors never see invisible text.
+  ============================================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-    /* Header */
-    header{
-      position: sticky;
+  <style>
+
+    /* =============================================
+       DESIGN TOKENS
+       These CSS variables control the entire colour
+       palette and core measurements. To re-theme the
+       site, change values here and they update everywhere.
+    ============================================= */
+    :root {
+      --bg:         #FAF7F2;               /* warm off-white page background */
+      --surface:    #FFFFFF;               /* white card and panel backgrounds */
+      --text:       #2A1F14;               /* deep warm brown — main body text */
+      --muted:      #7B6556;               /* warm medium brown — secondary text */
+      --line:       rgba(42, 31, 20, .12); /* subtle warm-toned border colour */
+      --teal:       #2B8A8A;               /* ocean teal — primary accent (from the logo wave) */
+      --teal-pale:  #EBF5F5;               /* very pale teal — for badge backgrounds */
+      --amber:      #C87B0A;               /* warm amber/gold — secondary accent (from the logo sky) */
+      --amber-pale: #FDF4E3;               /* very pale amber — for step number rings */
+      --shadow-sm:  0 2px 12px rgba(42, 31, 20, .06);
+      --shadow:     0 6px 28px rgba(42, 31, 20, .10);
+      --radius:     14px;
+      --max:        1100px;
+    }
+
+    /* =============================================
+       GLOBAL RESET AND BASE STYLES
+    ============================================= */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Smooth scrolling when a nav link is clicked */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Respect the accessibility setting for users who prefer no motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    body {
+      margin: 0;
+      /* System fonts load instantly and look native on every device */
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      /*
+        Very subtle warm tint in the top corners.
+        It is barely visible but adds a sense of depth.
+        The base colour is --bg (warm off-white).
+      */
+      background:
+        radial-gradient(ellipse 700px 350px at 0%   0%, rgba(200, 123, 10, .05), transparent 60%),
+        radial-gradient(ellipse 700px 350px at 100% 0%, rgba(43, 138, 138, .07), transparent 60%),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* All headings use the Lora serif — the personality font for this brand */
+    h1, h2, h3 {
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    /* Centred content wrapper used on most elements */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+
+    /* =============================================
+       HEADER AND NAVIGATION
+    ============================================= */
+    header {
+      position: sticky;   /* sticks to the top of the screen as you scroll */
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.65);
+      z-index: 50;        /* sits above page content */
+      /* Frosted-glass effect: content below blurs through the header */
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); /* required for Safari */
+      background: rgba(250, 247, 242, .90);
       border-bottom: 1px solid var(--line);
     }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 24px;
-      max-width: var(--max);
-      margin:0 auto;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:900;
-      letter-spacing:.2px;
-      min-width: 220px;
-    }
-    .brand img{
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.06);
-      padding: 6px;
-      border: 1px solid var(--line);
-    }
-    .navlinks{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
-    .pill{
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:var(--muted);
-      font-weight:800;
-      font-size:14px;
-    }
-    .pill:hover{ border-color: rgba(255,255,255,.22); color: var(--text); }
-    .cta{
-      padding:10px 14px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:14px;
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
-      color:#06101c;
-      border:0;
-    }
-    .cta:hover{ filter: brightness(1.03); }
 
-    /* Hero */
-    .hero{ padding: 54px 0 26px; }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 26px;
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 24px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* Logo and brand name side by side */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Lora', Georgia, serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+      min-width: 200px;
+    }
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;  /* circular crop to match the round logo shape */
+      background: #2A1F14; /* dark background so the logo PNG displays cleanly */
+      padding: 3px;
+      flex-shrink: 0;
+    }
+
+    /* Row of navigation links on the right of the header */
+    .navlinks {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    /* Outline-style nav link pill */
+    .pill {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .pill:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* Solid teal WhatsApp button in the navigation */
+    .cta {
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      background: var(--teal);
+      color: #FFFFFF;
+      border: 0;
+      transition: filter 0.15s;
+    }
+    .cta:hover {
+      filter: brightness(1.08);
+    }
+
+
+    /* =============================================
+       HERO SECTION
+    ============================================= */
+    .hero {
+      padding: 56px 0 36px;
+    }
+
+    /* Two-column layout: text left, quick-facts card right */
+    .heroGrid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
       align-items: start;
     }
-    .kicker{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-weight:900;
-      font-size:13px;
+
+    /* Small teal badge above the main headline */
+    .kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(43, 138, 138, .28);
+      background: var(--teal-pale);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: .2px;
     }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(94,234,212,.12);
-    }
-    h1{
-      margin: 14px 0 10px;
-      font-size: clamp(32px, 4.2vw, 52px);
-      line-height: 1.05;
-      letter-spacing: -0.8px;
-    }
-    .lead{
-      margin:0 0 18px;
-      font-size:18px;
-      line-height:1.6;
-      color: var(--muted);
-      max-width: 70ch;
-    }
-    .heroActions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-    .btn{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      justify-content:center;
-      padding:12px 16px;
-      border-radius:12px;
-      font-weight:900;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
-      color: var(--text);
-      min-width: 190px;
-    }
-    .btn:hover{ border-color: rgba(255,255,255,.22); }
-    .btnPrimary{
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
-      color:#06101c;
-      border:0;
-    }
-    .note{
-      margin-top:14px;
-      color: var(--muted);
-      font-size:14px;
-      line-height: 1.6;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
     }
 
-    /* Card */
-    .card{
+    h1 {
+      margin: 16px 0 14px;
+      /*
+        clamp(min, preferred, max) — the font scales with
+        the viewport width between the min and max values.
+      */
+      font-size: clamp(28px, 3.8vw, 50px);
+      letter-spacing: -0.4px;
+    }
+
+    /* Introductory paragraph under the headline */
+    .lead {
+      margin: 0 0 20px;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    /* Row of CTA buttons */
+    .heroActions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* Pricing and delivery note under the buttons */
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    /* Base button style (white/bordered) */
+    .btn {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      border: 1.5px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      min-width: 180px;
+    }
+    .btn:hover {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(43, 138, 138, .10);
+    }
+
+    /* Primary button variant — solid teal fill */
+    .btnPrimary {
+      background: var(--teal);
+      color: #FFFFFF;
+      border-color: var(--teal);
+    }
+    .btnPrimary:hover {
+      filter: brightness(1.06);
+      box-shadow: 0 4px 18px rgba(43, 138, 138, .28);
+    }
+
+
+    /* =============================================
+       QUICK FACTS CARD (right column of the hero)
+    ============================================= */
+    .card {
       border-radius: var(--radius);
       border: 1px solid var(--line);
-      background: rgba(16,26,42,.72);
+      background: var(--surface);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
-    .cardTop{
-      padding: 18px 18px 14px;
+
+    /* Teal-tinted header row of the card */
+    .cardTop {
+      padding: 16px 20px;
       border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: var(--teal-pale);
     }
-    .cardTop strong{ display:block; font-size:14px; letter-spacing:.2px; }
-    .cardTop span{ display:block; color: var(--muted); font-size:13px; margin-top:4px; }
-    .cardBody{ padding: 18px; }
-    .kv{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .mini{
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+    .cardTop strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--teal);
     }
-    .mini .label{ color: var(--muted); font-size: 12px; font-weight: 900; letter-spacing:.2px; }
-    .mini .value{ margin-top: 6px; font-size: 15px; font-weight: 900; }
-
-    /* Sections */
-    section{ padding: 28px 0; }
-    .sectionTitle{ font-size:22px; margin:0 0 12px; letter-spacing:-0.3px; }
-    .sectionLead{ margin:0 0 18px; color: var(--muted); line-height:1.7; max-width: 80ch; }
-
-    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .feature{
-      padding: 16px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+    .cardTop span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
     }
-    .feature h3{ margin:0 0 8px; font-size:16px; }
-    .feature p{ margin:0; color: var(--muted); line-height:1.6; }
 
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
+    .cardBody {
+      padding: 18px;
+    }
+
+    /* 2x2 grid of small fact tiles inside the card */
+    .kv {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
-    .photo{
-      border-radius: 14px;
+    .mini {
+      padding: 12px;
+      border-radius: 10px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      overflow: hidden;
+      background: var(--bg);
     }
-    .photo img{
-      display:block;
-      width:100%;
-      height: 170px;
-      object-fit: cover;
-    }
-    .caption{
-      padding: 10px 12px;
+    .mini .label {
       color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      border-top: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .mini .value {
+      margin-top: 5px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
     }
 
-    .twoCol{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
+
+    /* =============================================
+       WAVE DIVIDER
+       A decorative SVG line that echoes the wave in
+       the Knysna Rocks logo. Appears once, between
+       the hero and the Highlights section.
+    ============================================= */
+    .wave-divider {
+      width: 100%;
+      line-height: 0;  /* removes the small white gap below inline SVG */
+      margin: 12px 0;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 40px;
+    }
+
+
+    /* =============================================
+       SECTION STRUCTURE
+    ============================================= */
+    section {
+      padding: 36px 0;
+    }
+    .sectionTitle {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 0 10px;
+      letter-spacing: -0.3px;
+    }
+    .sectionLead {
+      margin: 0 0 28px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 68ch;
+    }
+
+
+    /* =============================================
+       HIGHLIGHTS — three feature cards
+    ============================================= */
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+    }
+
+    .feature {
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s;
+    }
+    .feature:hover {
+      box-shadow: var(--shadow);
+    }
+
+    /* Small icon container above the card heading */
+    .featureIcon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--teal-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+
+    /* =============================================
+       GALLERY — four product photos
+    ============================================= */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .photo {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .photo:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px); /* subtle lift when hovering a photo */
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: 210px;      /* taller than the original 170px for better visual impact */
+      object-fit: cover;  /* crops the image to fill the box without stretching */
+    }
+
+    .caption {
+      padding: 11px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .1px;
+    }
+
+
+    /* =============================================
+       HOW IT WORKS — two process panels side by side
+
+       BUG FIX: The original code used class="twoCol"
+       in the HTML but .twoCol was never defined in the
+       CSS. On desktop the panels stacked vertically.
+       The rule below is the fix.
+    ============================================= */
+    .twoCol {
+      display: grid;
+      grid-template-columns: 1fr 1fr;  /* two equal columns on desktop */
+      gap: 16px;
+    }
+
+    .panel {
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Amber numbered circle for each step */
+    .stepNum {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--amber);  /* amber gold for process steps — differs from teal info elements */
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .panel strong {
+      display: block;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .panel p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+
+    /* =============================================
+       CONTACT SECTION
+    ============================================= */
+    .contactCard {
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
       align-items: start;
     }
-    .panel{
-      padding: 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-    }
-    .panel strong{ display:block; }
-    .panel p{ margin: 8px 0 0; color: var(--muted); line-height:1.7; }
 
-    /* Contact */
-    .contactCard{
-      padding: 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      align-items:start;
+    .contactCard > div > strong {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
     }
-    .contactCard p{ color: var(--muted); margin: 8px 0 0; line-height: 1.7; }
-    .contactList{ display:flex; flex-direction:column; gap: 10px; }
-    .contactItem{
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+    .contactCard p {
       color: var(--muted);
-      font-weight: 800;
+      margin: 10px 0 0;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    /* Stacked list of contact details on the right */
+    .contactList {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contactItem {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--muted);
+      font-weight: 600;
       font-size: 14px;
       word-break: break-word;
+      line-height: 1.5;
     }
 
-    footer{
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
       border-top: 1px solid var(--line);
-      padding: 22px 0 36px;
+      padding: 24px 0 44px;
       color: var(--muted);
       font-size: 13px;
+      margin-top: 12px;
     }
 
-    @media (max-width: 900px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .grid3{ grid-template-columns: 1fr; }
-      .gallery{ grid-template-columns: 1fr; }
-      .twoCol{ grid-template-columns: 1fr; }
-      .contactCard{ grid-template-columns: 1fr; }
-      .nav{ padding: 14px 16px; }
-      .wrap{ padding: 18px; }
-      .brand{ min-width: unset; }
+
+    /* =============================================
+       RESPONSIVE STYLES
+       Screens narrower than 900px (tablets and phones)
+       switch from multi-column layouts to single column.
+    ============================================= */
+    @media (max-width: 900px) {
+      .heroGrid    { grid-template-columns: 1fr; }
+      .grid3       { grid-template-columns: 1fr; }
+      .gallery     { grid-template-columns: 1fr 1fr; }  /* 2 columns on tablet */
+      .twoCol      { grid-template-columns: 1fr; }
+      .contactCard { grid-template-columns: 1fr; }
+      .nav         { padding: 14px 16px; }
+      .wrap        { padding: 18px; }
+      .brand       { min-width: unset; }
     }
+
+    /* Very small screens (phones in portrait) */
+    @media (max-width: 560px) {
+      .gallery            { grid-template-columns: 1fr; } /* single column on phone */
+      .navlinks .pill     { display: none; }              /* hide text links, keep WhatsApp button */
+    }
+
   </style>
 </head>
 
 <body>
+
+  <!-- =============================================
+       HEADER
+  ============================================= -->
   <header>
     <div class="nav">
+
+      <!-- Logo and brand name -->
       <div class="brand">
         <img src="/assets/logo.png" alt="Knysna Rocks logo" />
         <div>Knysna Rocks</div>
       </div>
 
+      <!-- Nav links — href="#section-id" jumps to that section -->
       <nav class="navlinks" aria-label="Primary navigation">
         <a class="pill" href="#highlights">Highlights</a>
         <a class="pill" href="#gallery">Gallery</a>
         <a class="pill" href="#process">How it works</a>
         <a class="pill" href="#contact">Contact</a>
-        <a class="cta" href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="cta"  href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
+
     </div>
   </header>
 
+
   <main class="wrap">
+
+    <!-- =============================================
+         HERO
+    ============================================= -->
     <section class="hero" id="top">
       <div class="heroGrid">
+
+        <!-- Left: headline, lead text, and CTAs -->
         <div>
-          <div class="kicker"><span class="dot" aria-hidden="true"></span> Handmade resin • Knysna • South Africa</div>
+          <div class="kicker">
+            <span class="dot" aria-hidden="true"></span>
+            Handmade resin &bull; Knysna &bull; South Africa
+          </div>
 
           <h1>Handmade resin gifts and keepsakes, inspired by the coast.</h1>
 
           <p class="lead">
-            Knysna Rocks creates small-batch resin pieces that preserve natural textures and meaningful details,
-            from dried flowers and shells to Knysna-inspired sand and stones. Each piece is handmade and unique.
+            Knysna Rocks creates small-batch resin pieces that preserve natural textures and
+            meaningful details, from dried flowers and shells to Knysna-inspired sand and stones.
+            Each piece is handmade and unique.
           </p>
 
           <div class="heroActions">
-            <a class="btnPrimary btn" href="https://wa.me/27828251520" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-            <a class="btn" href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">Email an enquiry</a>
+            <a class="btnPrimary btn"
+               href="https://wa.me/27828251520"
+               target="_blank"
+               rel="noopener">
+              Enquire on WhatsApp
+            </a>
+            <a class="btn"
+               href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">
+              Email an enquiry
+            </a>
           </div>
 
-          <div class="note">
+          <p class="note">
             Prices are available on request. Courier delivery is available within South Africa.
-          </div>
+          </p>
         </div>
 
+        <!-- Right: quick facts card -->
         <aside class="card" aria-label="Quick facts">
           <div class="cardTop">
             <strong>Quick details</strong>
-            <span>Simple and clear, as you get started</span>
+            <span>Everything you need to get started</span>
           </div>
           <div class="cardBody">
             <div class="kv">
@@ -371,115 +738,186 @@
             </div>
           </div>
         </aside>
+
       </div>
     </section>
 
+
+    <!--
+      Wave divider — a decorative sinusoidal line that echoes
+      the wave shape in the Knysna Rocks logo. It appears once
+      between the hero and the Highlights section.
+      aria-hidden="true" means screen readers skip it entirely.
+    -->
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1100 40"
+           xmlns="http://www.w3.org/2000/svg"
+           preserveAspectRatio="none">
+        <path
+          d="M0,20 C137,38 275,2 550,20 C825,38 963,2 1100,20"
+          fill="none"
+          stroke="rgba(43, 138, 138, .24)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+      </svg>
+    </div>
+
+
+    <!-- =============================================
+         HIGHLIGHTS
+    ============================================= -->
     <section id="highlights">
       <h2 class="sectionTitle">Highlights</h2>
-      <p class="sectionLead">
-        A simple product line, built around quality and thoughtful design.
-      </p>
+      <p class="sectionLead">A focused product line, built around quality and thoughtful design.</p>
 
       <div class="grid3">
+
         <div class="feature">
+          <div class="featureIcon" aria-hidden="true">🌿</div>
           <h3>Handmade and unique</h3>
           <p>Each piece is made by hand. Natural textures and embedded details make every item slightly different.</p>
         </div>
+
         <div class="feature">
+          <div class="featureIcon" aria-hidden="true">🌊</div>
           <h3>Knysna-inspired</h3>
           <p>Coastal colours, shells, sand, and natural elements, inspired by the Garden Route.</p>
         </div>
+
         <div class="feature">
+          <div class="featureIcon" aria-hidden="true">🎁</div>
           <h3>Custom keepsakes</h3>
           <p>If you have an idea or a meaningful item to preserve, we can discuss a custom design.</p>
         </div>
+
       </div>
     </section>
 
+
+    <!-- =============================================
+         GALLERY
+    ============================================= -->
     <section id="gallery">
       <h2 class="sectionTitle">Gallery</h2>
-      <p class="sectionLead">
-        Early examples of styles and finishes. As more products are made, we can expand this into a catalogue.
-      </p>
+      <p class="sectionLead">Early examples of styles and finishes. As more products are made, this will grow into a full catalogue.</p>
 
       <div class="gallery">
+
         <div class="photo">
-          <img src="/assets/products-1.jpg" alt="Handmade hair accessories arranged on a neutral background" loading="lazy">
+          <img src="/assets/products-1.jpg"
+               alt="Handmade hair accessories arranged on a neutral background"
+               loading="lazy">
           <div class="caption">Accessories and sets</div>
         </div>
+
         <div class="photo">
-          <img src="/assets/products-2.jpg" alt="Resin blocks featuring layered sand and shells" loading="lazy">
-          <div class="caption">Knysna sand & shell pieces</div>
+          <img src="/assets/products-2.jpg"
+               alt="Resin blocks featuring layered sand and shells"
+               loading="lazy">
+          <div class="caption">Knysna sand &amp; shell pieces</div>
         </div>
+
         <div class="photo">
-          <img src="/assets/products-3.jpg" alt="Resin hair ties with embedded sand and shells" loading="lazy">
+          <img src="/assets/products-3.jpg"
+               alt="Resin hair ties with embedded sand and shells"
+               loading="lazy">
           <div class="caption">Hair ties with resin accents</div>
         </div>
+
         <div class="photo">
-          <img src="/assets/products-4.jpg" alt="Resin hair clips with embedded sand and shells" loading="lazy">
+          <img src="/assets/products-4.jpg"
+               alt="Resin hair clips with embedded sand and shells"
+               loading="lazy">
           <div class="caption">Coastal resin clips</div>
         </div>
+
       </div>
     </section>
 
+
+    <!-- =============================================
+         HOW IT WORKS
+    ============================================= -->
     <section id="process">
       <h2 class="sectionTitle">How it works</h2>
-      <p class="sectionLead">
-        A clear process helps customers feel confident, especially for custom work.
-      </p>
+      <p class="sectionLead">A clear process helps customers feel confident, especially for custom work.</p>
 
       <div class="twoCol">
+
         <div class="panel">
-          <strong>1) Tell us what you want</strong>
+          <div class="stepNum" aria-hidden="true">1</div>
+          <strong>Tell us what you want</strong>
           <p>
-            Message us on WhatsApp or email with what you have in mind. If you want something custom, share a photo
-            or a short description of the colours and style you like.
+            Message us on WhatsApp or email with what you have in mind. If you want something custom,
+            share a photo or a short description of the colours and style you like.
           </p>
         </div>
+
         <div class="panel">
-          <strong>2) We confirm options and pricing</strong>
+          <div class="stepNum" aria-hidden="true">2</div>
+          <strong>We confirm options and pricing</strong>
           <p>
-            Prices are available on request. Once we understand the design and materials, we will confirm pricing,
-            timelines, and delivery within South Africa via courier.
+            Prices are available on request. Once we understand the design and materials, we will confirm
+            pricing, timelines, and delivery within South Africa via courier.
           </p>
         </div>
+
       </div>
     </section>
 
+
+    <!-- =============================================
+         CONTACT
+    ============================================= -->
     <section id="contact">
       <h2 class="sectionTitle">Contact</h2>
-      <p class="sectionLead">
-        WhatsApp is the fastest way to reach us. Email is also available for detailed enquiries.
-      </p>
+      <p class="sectionLead">WhatsApp is the fastest way to reach us. Email is also available for detailed enquiries.</p>
 
       <div class="contactCard">
+
+        <!-- Left: instructions and CTA buttons -->
         <div>
           <strong>Enquiries and orders</strong>
           <p>
-            If you are asking about a custom piece, please include the type of item, preferred colours, and any materials
-            you would like included (for example shells, sand, dried flowers, or small keepsakes).
+            If you are asking about a custom piece, please include the type of item, preferred colours,
+            and any materials you would like included, for example shells, sand, dried flowers, or small keepsakes.
           </p>
 
-          <div class="heroActions" style="margin-top:14px;">
-            <a class="btnPrimary btn" href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp Knysna Rocks</a>
-            <a class="btn" href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">Email info@knysnarocks.co.za</a>
+          <div class="heroActions" style="margin-top: 18px;">
+            <a class="btnPrimary btn"
+               href="https://wa.me/27828251520"
+               target="_blank"
+               rel="noopener">
+              WhatsApp Knysna Rocks
+            </a>
+            <a class="btn"
+               href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">
+              Email info@knysnarocks.co.za
+            </a>
           </div>
         </div>
 
+        <!-- Right: contact detail tiles -->
         <div class="contactList" aria-label="Contact details">
           <div class="contactItem">Email: info@knysnarocks.co.za</div>
           <div class="contactItem">WhatsApp: +27 82 825 1520</div>
-          <div class="contactItem">Delivery: Courier within South Africa</div>
-          <div class="contactItem">Based in: Knysna, South Africa</div>
+          <div class="contactItem">Courier delivery within South Africa</div>
+          <div class="contactItem">Based in Knysna, South Africa</div>
         </div>
+
       </div>
     </section>
 
+
+    <!-- =============================================
+         FOOTER
+    ============================================= -->
     <footer>
-      <div class="wrap" style="padding:0;">
-        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center;">
-          <div>© <span id="y"></span> Knysna Rocks</div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+      <div class="wrap" style="padding: 0;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+          <div>&copy; <span id="y"></span> Knysna Rocks &middot; Handmade in Knysna, South Africa</div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
             <a class="pill" href="#top">Back to top</a>
             <a class="pill" href="mailto:info@knysnarocks.co.za?subject=Knysna%20Rocks%20Enquiry">Email</a>
             <a class="pill" href="https://wa.me/27828251520" target="_blank" rel="noopener">WhatsApp</a>
@@ -487,10 +925,14 @@
         </div>
       </div>
     </footer>
+
   </main>
 
+
   <script>
+    // Automatically keeps the copyright year correct — no manual update needed each year
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
